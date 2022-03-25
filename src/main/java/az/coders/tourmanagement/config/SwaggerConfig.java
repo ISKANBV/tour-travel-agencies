@@ -38,7 +38,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
                                 MediaType.APPLICATION_XHTML_XML_VALUE)
                         .collect(Collectors.toSet()))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("az.coders.tourmanagement"))
+                .apis(RequestHandlerSelectors.basePackage("az.coders.tourmanagement.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(apiInfo())
                 .securitySchemes(Collections.singletonList(apiKey()));

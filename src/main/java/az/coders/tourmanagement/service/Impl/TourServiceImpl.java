@@ -5,12 +5,15 @@ import az.coders.tourmanagement.entity.TourEntity;
 import az.coders.tourmanagement.mapper.TourMapper;
 import az.coders.tourmanagement.repository.TourRepository;
 import az.coders.tourmanagement.service.TourService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+@Service
+@Transactional
 public class TourServiceImpl implements TourService {
 
     private final TourRepository repository;

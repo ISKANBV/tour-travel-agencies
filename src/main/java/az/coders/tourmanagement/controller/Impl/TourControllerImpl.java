@@ -3,11 +3,13 @@ package az.coders.tourmanagement.controller.Impl;
 import az.coders.tourmanagement.controller.TourController;
 import az.coders.tourmanagement.dto.TourDTO;
 import az.coders.tourmanagement.service.TourService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@RestController
 @RequestMapping("/tour")
 public class TourControllerImpl implements TourController {
 
@@ -19,7 +21,7 @@ public class TourControllerImpl implements TourController {
 
     @Override
     @PostMapping("/add")
-    public void add(TourDTO tour) {
+    public void add(@RequestBody TourDTO tour) {
         service.add(tour);
     }
 
@@ -37,7 +39,7 @@ public class TourControllerImpl implements TourController {
 
     @Override
     @PutMapping("/")
-    public void update(TourDTO tour) {
+    public void update(@RequestBody TourDTO tour) {
         service.update(tour);
     }
 
@@ -54,8 +56,8 @@ public class TourControllerImpl implements TourController {
     }
 
     @Override
-    @GetMapping("/{destination}")
-    public List<TourDTO> getTourByDestination(@PathVariable("destination") String destination) {
+    @GetMapping("/destination/{destination}")
+    public List<TourDTO> getTourByDestination(@PathVariable(name = "destination") String destination) {
         return service.getTourByDestination(destination);
     }
 }

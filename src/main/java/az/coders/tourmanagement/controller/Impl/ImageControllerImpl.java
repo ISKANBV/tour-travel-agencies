@@ -3,16 +3,15 @@ package az.coders.tourmanagement.controller.Impl;
 import az.coders.tourmanagement.controller.ImageController;
 import az.coders.tourmanagement.dto.ImageDTO;
 import az.coders.tourmanagement.service.ImageService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.function.Function;
+import java.util.stream.Stream;
 
+@RestController
 @RequestMapping("/images")
 public class ImageControllerImpl implements ImageController {
 
@@ -24,10 +23,10 @@ public class ImageControllerImpl implements ImageController {
 
     @Override
     @GetMapping("/all")
-    public ResponseEntity<?> getAll() {
-        return (ResponseEntity<?>) service.getAll().stream().map(imageDTO -> ResponseEntity.ok()
+    public Stream<ResponseEntity<byte[]>> getAll() {
+        return service.getAll().stream().map(imageDTO -> ResponseEntity.ok()
                 .header("fileName",imageDTO.getOriginalFilename())
-                .contentType(MediaType.valueOf(String.valueOf(imageDTO)))
+                .contentType(MediaType.valueOf(String.valueOf(imageDTO.getContentType())))
                 .contentLength(imageDTO.getSize())
                 .body(imageDTO.getBytes()));
     }
@@ -38,7 +37,7 @@ public class ImageControllerImpl implements ImageController {
         ImageDTO imageDTO = service.getById(id);
         return  ResponseEntity.ok()
                 .header("fileName",imageDTO.getOriginalFilename())
-                .contentType(MediaType.valueOf(String.valueOf(imageDTO)))
+                .contentType(MediaType.valueOf(String.valueOf(imageDTO.getContentType())))
                 .contentLength(imageDTO.getSize())
                 .body(imageDTO.getBytes());
     }

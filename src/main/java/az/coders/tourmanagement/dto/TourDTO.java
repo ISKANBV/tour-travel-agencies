@@ -1,9 +1,11 @@
 package az.coders.tourmanagement.dto;
 
+import az.coders.tourmanagement.entity.ImageEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -29,7 +31,7 @@ public class TourDTO {
 
     private LocalDate date;
 
-    private String image;
+    private ImageEntity image;
 
     private LocalDateTime createdAt;
 }

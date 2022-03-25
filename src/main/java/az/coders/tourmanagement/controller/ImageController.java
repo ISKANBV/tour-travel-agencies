@@ -1,16 +1,14 @@
 package az.coders.tourmanagement.controller;
 
-import az.coders.tourmanagement.dto.ImageDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.util.stream.Stream;
 
-@RestController
+
 public interface ImageController {
 
-    ResponseEntity<?> getAll();
+    Stream<ResponseEntity<byte[]>> getAll();
 
     ResponseEntity<?> getById(long id);
 

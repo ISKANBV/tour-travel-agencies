@@ -49,9 +49,7 @@ public class TourEntity {
     private LocalDate date;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "tour_images",
-                joinColumns = @JoinColumn(name = "tour_id"),
-                inverseJoinColumns = @JoinColumn(name = "image_id"))
+    @JoinColumn(name = "image_id")
     private ImageEntity image;
 
     @CreationTimestamp

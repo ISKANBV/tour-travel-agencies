@@ -7,25 +7,45 @@ import az.coders.tourmanagement.mapper.ImageMapper;
 import az.coders.tourmanagement.mapper.TourMapper;
 import az.coders.tourmanagement.repository.ImageRepository;
 import az.coders.tourmanagement.service.ImageService;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 
     private final ImageRepository repository;
 
-    public ImageServiceImpl(ImageRepository repository, ImageMapper mapper) {
+    public ImageServiceImpl(ImageRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public List<ImageDTO> getAll() {
-            return repository.findAll().stream().map(ImageMapper.INSTANCE::toDTO).collect(Collectors.toList());
+//            return repository.findAll().stream().map(ImageMapper.INSTANCE::toDTO).collect(Collectors.toList());
+        List<ImageDTO> list = new ArrayList<>();
+        for (ImageEntity imageDTO : repository.findAll()) {
+            try {
+                list.add(ImageMapper.INSTANCE.toDTO(imageDTO));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
 
+//        return (List<ImageDTO>) repository.findAll().stream().map(image -> {
+//            try {
+//                return ImageMapper.INSTANCE.toDTO(image);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        });
     }
 
     @Override
@@ -35,6 +55,7 @@ public class ImageServiceImpl implements ImageService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     @Override

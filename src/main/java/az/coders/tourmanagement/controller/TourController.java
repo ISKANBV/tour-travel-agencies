@@ -1,11 +1,11 @@
 package az.coders.tourmanagement.controller;
 
 import az.coders.tourmanagement.dto.TourDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
 public interface TourController{
 
     List<TourDTO> getTourByDestination(String destination);

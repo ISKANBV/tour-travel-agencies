@@ -20,4 +20,5 @@ public class ImageDTO {
     private Long size;
 
     private byte[] bytes;
+
 }

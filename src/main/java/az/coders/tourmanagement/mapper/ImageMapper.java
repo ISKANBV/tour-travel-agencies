@@ -16,22 +16,7 @@ public interface ImageMapper {
 
     ImageMapper INSTANCE = Mappers.getMapper(ImageMapper.class);
 
-//    @Mappings({
-//            @Mapping(target = "id",source = "image.id"),
-//            @Mapping(target = "name",source = "image.name"),
-//            @Mapping(target = "originalFilename",source = "image.originalFilename"),
-//            @Mapping(target = "contentType",source = "image.contentType"),
-//            @Mapping(target = "size",source = "image.size"),
-//            @Mapping(target = "bytes",source = "image.bytes"),
-//    })
     ImageDTO toDTO(ImageEntity image) throws IOException;
 
-//    @Mappings({
-//            @Mapping(target = "name",source = "file.name"),
-//            @Mapping(target = "originalFilename",source = "file.originalFilename"),
-//            @Mapping(target = "contentType",source = "file.contentType"),
-//            @Mapping(target = "size",source = "file.size"),
-//            @Mapping(target = "bytes",source = "file.bytes"),
-//    })
     ImageEntity toEntity(MultipartFile file) throws IOException;
 }

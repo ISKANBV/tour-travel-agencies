@@ -30,6 +30,6 @@ public class ImageEntity {
     private Long size;
 
     @Lob
-    @Column(columnDefinition = "BLOB")
+    @Column(name = "image")
     private byte[] bytes;
 }
