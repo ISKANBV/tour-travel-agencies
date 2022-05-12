@@ -1,7 +1,6 @@
 package az.coders.tourmanagement.service;
 
 import az.coders.tourmanagement.dto.TourDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

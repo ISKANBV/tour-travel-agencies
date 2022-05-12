@@ -3,8 +3,6 @@ package az.coders.tourmanagement.controller.Impl;
 import az.coders.tourmanagement.controller.TourController;
 import az.coders.tourmanagement.dto.TourDTO;
 import az.coders.tourmanagement.service.TourService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

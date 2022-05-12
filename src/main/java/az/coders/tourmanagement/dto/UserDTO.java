@@ -1,12 +1,10 @@
 package az.coders.tourmanagement.dto;
 
 import az.coders.tourmanagement.entity.Role;
-import az.coders.tourmanagement.entity.TourEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data

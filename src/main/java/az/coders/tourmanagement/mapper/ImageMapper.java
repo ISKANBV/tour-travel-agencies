@@ -3,8 +3,6 @@ package az.coders.tourmanagement.mapper;
 import az.coders.tourmanagement.dto.ImageDTO;
 import az.coders.tourmanagement.entity.ImageEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,25 +26,17 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public List<ImageDTO> getAll() {
-//            return repository.findAll().stream().map(ImageMapper.INSTANCE::toDTO).collect(Collectors.toList());
-        List<ImageDTO> list = new ArrayList<>();
-        for (ImageEntity imageDTO : repository.findAll()) {
-            try {
-                list.add(ImageMapper.INSTANCE.toDTO(imageDTO));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return list;
-
-//        return (List<ImageDTO>) repository.findAll().stream().map(image -> {
-//            try {
-//                return ImageMapper.INSTANCE.toDTO(image);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        });
+        return repository.findAll()
+                .stream()
+                .map(entity -> {
+                    try {
+                        return ImageMapper.INSTANCE.toDTO(entity);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                })
+                .collect(Collectors.toList());
     }
 
     @Override
